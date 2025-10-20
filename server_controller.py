@@ -2093,15 +2093,20 @@ class VideoDownloaderServer:
         return filename[:200]
     
     def download_youtube(self, url):
-        """유튜브 영상 다운로드"""
+        """유튜브 영상 다운로드 (고화질)"""
         try:
             # 다운로드 전 파일 목록 확인
             before_files = set(os.listdir(self.VIDEOS_DIR)) if os.path.exists(self.VIDEOS_DIR) else set()
             
+            # 🎬 고화질 다운로드 설정 (1080p 우선, 최대 화질)
             ydl_opts = {
-                'format': 'best[ext=mp4][height<=720][vcodec^=avc1]/best[ext=mp4][height<=720]/best[ext=mp4]/best',
+                # 최고 화질 우선 다운로드 (1080p → 2K → 4K → 최고화질)
+                # bestvideo+bestaudio: 영상과 음성을 따로 다운받아 합침 (최고 화질)
+                # best: 영상+음성이 합쳐진 파일 중 최고 화질
+                'format': 'bestvideo[ext=mp4][height<=1920]+bestaudio[ext=m4a]/bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4][height<=1920]/best[ext=mp4]/best',
                 'outtmpl': os.path.join(self.VIDEOS_DIR, '%(title)s.%(ext)s'),
                 'quiet': True,
+                'merge_output_format': 'mp4',  # 영상+음성 합칠 때 mp4로
                 'postprocessors': [{
                     'key': 'FFmpegVideoConvertor',
                     'preferedformat': 'mp4',
