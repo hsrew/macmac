@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영상 다운로더 & 갤러리</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=20250119-75">
+</head>
+<body>
+    <!-- 로딩 팝업 -->
+        <div id="loadingPopup" class="loading-popup" style="display: none;">
+            <div class="loading-popup-content">
+                <div class="loading-text">⚡ 음원 준비 중...</div>
+                <div class="loading-subtext">동물 친구들이 설산을 자유롭게 뛰어다녀요 🏔️</div>
+                <button class="close-loading-btn" onclick="hideLoadingPopup()" title="닫기">✕</button>
+                <div class="winter-mountain-background">
+                    <div class="mountain mountain1">🏔️</div>
+                    <div class="mountain mountain2">⛰️</div>
+                    <div class="mountain mountain3">🏔️</div>
+                    <div class="mountain mountain4">⛰️</div>
+                    <div class="snowflake snowflake1">❄️</div>
+                    <div class="snowflake snowflake2">❄️</div>
+                    <div class="snowflake snowflake3">❄️</div>
+                    <div class="snowflake snowflake4">❄️</div>
+                    <div class="snowflake snowflake5">❄️</div>
+                    <div class="snowflake snowflake6">❄️</div>
+                    <div class="snowflake snowflake7">❄️</div>
+                    <div class="snowflake snowflake8">❄️</div>
+                    <div class="snowflake snowflake9">❄️</div>
+                    <div class="snowflake snowflake10">❄️</div>
+                </div>
+                <div class="running-winter-animals-container">
+                    <div class="running-winter-animal animal1">🐧</div>
+                    <div class="running-winter-animal animal2">🐻</div>
+                    <div class="running-winter-animal animal3">🦌</div>
+                    <div class="running-winter-animal animal4">🐺</div>
+                    <div class="winter-trail trail1">❄️</div>
+                    <div class="winter-trail trail2">❄️</div>
+                    <div class="winter-trail trail3">❄️</div>
+                    <div class="winter-trail trail4">❄️</div>
+                </div>
+            </div>
+        </div>
+
+    <div class="container">
+        <!-- 헤더 -->
+        <header>
+            <div class="header-content">
+                <h1>🎬 영상 다운로더 & 갤러리</h1>
+                <p class="subtitle">유튜브 · 인스타그램 영상을 쉽게 저장하고 관리하세요</p>
+            </div>
+            <div class="header-actions">
+                <!-- 접속자 카운터 -->
+                <div class="active-users-counter" onclick="toggleActiveUsers()">
+                    <span class="user-icon">👥</span>
+                    <span class="user-count" id="userCount">0</span>
+                </div>
+                <a href="/logout" class="logout-btn" onclick="return confirm('로그아웃 하시겠습니까?')">
+                    🚪 로그아웃
+                </a>
+            </div>
+        </header>
+        
+        <!-- 접속자 상세 정보 팝업 -->
+        <div id="activeUsersPopup" class="active-users-popup" style="display: none;">
+            <div class="active-users-content">
+                <div class="active-users-header">
+                    <h3>👥 현재 접속자 (<span id="popupUserCount">0</span>명)</h3>
+                    <button class="close-popup-btn" onclick="toggleActiveUsers()">✕</button>
+                </div>
+                <div class="active-users-list" id="activeUsersList">
+                    <!-- 접속자 목록이 여기에 표시됩니다 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- URL 입력 섹션 -->
+        <section class="download-section">
+            <div class="input-group-vertical">
+                <input 
+                    type="text" 
+                    id="videoUrl" 
+                    placeholder="유튜브 URL 또는 검색어를 입력하세요..."
+                    onkeypress="if(event.key === 'Enter') streamAudio()"
+                >
+                <div class="button-group">
+                    <button onclick="searchYoutube()" id="searchBtn" class="search-btn" title="유튜브 검색">
+                        🔍 검색
+                    </button>
+                    <button onclick="streamAudio()" id="streamBtn" class="stream-btn" title="백그라운드 재생 (다운로드 안 함)">
+                        🎵 재생
+                    </button>
+                    <button onclick="downloadVideo()" id="downloadBtn">
+                        <span class="btn-text">💾 저장</span>
+                        <span class="btn-loading" style="display: none;">
+                            <span class="spinner"></span>
+                            저장 중...
+                        </span>
+                    </button>
+                    <button id="refreshBtn" class="refresh-hard-btn" title="강력 새로고침 + 캐시 초기화">
+                        ♻️ 새로고침
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 스트리밍 모드 토글 -->
+            <div class="streaming-mode-toggle">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="streamingModeToggle" onchange="toggleStreamingMode()">
+                    <span class="toggle-slider"></span>
+                </label>
+                <span class="toggle-label" id="streamingModeLabel">🚗 테슬라 모드 (실시간 스트리밍)</span>
+            </div>
+            
+            <div id="statusMessage" class="status-message"></div>
+        </section>
+
+        <!-- 검색 결과 섹션 -->
+        <section class="search-results-section" id="searchResultsSection" style="display: none;">
+            <div class="search-results-header">
+                <h2>🔍 검색 결과</h2>
+                <button onclick="closeSearchResults()" class="close-search-btn">✕</button>
+            </div>
+            <div id="searchResultsContainer" class="search-results-container">
+                <!-- 검색 결과가 여기에 표시됩니다 -->
+            </div>
+        </section>
+
+        <!-- 백그라운드 플레이어 -->
+        <section class="audio-player" id="audioPlayer" style="display: none;">
+            <div class="player-header">
+                <div class="player-info">
+                    <div class="player-title" id="playerTitle">재생 중...</div>
+                    <div class="player-subtitle" id="playerSubtitle">YouTube Audio</div>
+                </div>
+                <button onclick="closePlayer()" class="close-player-btn">✕</button>
+            </div>
+            <audio id="audioElement" controls preload="auto" playsinline webkit-playsinline></audio>
+            <div class="player-controls">
+                <div class="skip-group">
+                    <button onclick="skipBackward()" class="skip-btn skip-backward" title="3분 뒤로">
+                        ⏪ 3분
+                    </button>
+                    <button onclick="skipForward()" class="skip-btn skip-forward" title="3분 앞으로">
+                        3분 ⏩
+                    </button>
+                </div>
+                <div class="skip-group">
+                    <button onclick="skipBackward10()" class="skip-btn skip-backward-minor" title="10초 뒤로">
+                        ⏪ 10초
+                    </button>
+                    <button onclick="skipForward10()" class="skip-btn skip-forward-minor" title="10초 앞으로">
+                        10초 ⏩
+                    </button>
+                </div>
+            </div>
+            <div class="player-hint">📱 화면을 꺼도 재생이 계속됩니다</div>
+        </section>
+
+        <!-- 재생 목록 섹션 -->
+        <section class="playlist-section" id="playlistSection" style="display: none;">
+            <div class="playlist-header">
+                <h2>🎵 재생 목록</h2>
+                <div class="playlist-controls">
+                    <input 
+                        type="text" 
+                        id="playlistSearchInput" 
+                        placeholder="🔍 재생 목록 검색..."
+                        onkeyup="searchPlaylist()"
+                        class="playlist-search-input"
+                    >
+                    <button onclick="clearAllPlaylist()" class="clear-all-btn" title="전체 삭제">
+                        🗑️ 전체 삭제
+                    </button>
+                </div>
+            </div>
+            <div id="playlistContainer" class="playlist-container">
+                <!-- 재생 목록 항목들이 여기에 표시됩니다 -->
+            </div>
+            <div id="playlistEmptySearch" class="playlist-empty" style="display: none;">
+                검색 결과가 없습니다
+            </div>
+        </section>
+
+        <!-- 갤러리 섹션 -->
+        <section class="gallery-section">
+            <div class="gallery-header">
+                <h2>📱 내 영상 갤러리</h2>
+                <div class="gallery-controls">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="🔍 영상 검색..."
+                        onkeyup="searchVideos()"
+                        class="search-input"
+                    >
+                    <button onclick="toggleView()" class="view-toggle-btn" id="viewToggleBtn" title="목록 보기">
+                        📋
+                    </button>
+                    <button onclick="refreshGallery()" class="refresh-btn" title="새로고침">
+                        🔄
+                    </button>
+                </div>
+            </div>
+            
+            <div id="videoGallery" class="video-grid">
+                <div class="loading-placeholder">
+                    <span class="spinner-large"></span>
+                    <p>영상 목록을 불러오는 중...</p>
+                </div>
+            </div>
+
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <div class="empty-icon">📹</div>
+                <p>아직 다운로드한 영상이 없습니다</p>
+                <p class="empty-hint">위에 URL을 입력하여 영상을 다운로드하세요!</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- 영상 재생 모달 (갤러리: 버튼 없음, 영상만) -->
+    <div id="videoModal" class="modal" onclick="if(event.target === this) closeModal()">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <video id="modalVideo" controls autoplay>
+                <source id="modalVideoSource" src="" type="video/mp4">
+                브라우저가 비디오 태그를 지원하지 않습니다.
+            </video>
+        </div>
+    </div>
+
+    <!-- 바로보기 모달 -->
+    <div id="watchModal" class="modal" onclick="if(event.target === this) closeWatchModal()">
+        <div class="modal-content">
+            <div class="watch-modal-header">
+                <div class="watch-title" id="watchTitle">영상 제목</div>
+                <span class="close-btn" onclick="closeWatchModal()">&times;</span>
+            </div>
+            <video id="watchVideo" controls autoplay>
+                <source id="watchVideoSource" src="" type="video/mp4">
+                브라우저가 비디오 태그를 지원하지 않습니다.
+            </video>
+            <div class="watch-info" id="watchInfo">⚡ 재생 중 | 광고 없음</div>
+        </div>
+    </div>
+
+    <!-- 음원/영상 공유 모달 -->
+    <div id="shareModal" class="modal" onclick="if(event.target === this) closeShareModal()" style="display: none;">
+        <div class="share-modal-content">
+            <div class="share-modal-header">
+                <h3 id="shareModalTitle">📤 음원 공유하기</h3>
+                <span class="close-btn" onclick="closeShareModal()">&times;</span>
+            </div>
+            <div class="share-content-info">
+                <div class="share-thumbnail" id="shareThumbnail"></div>
+                <div class="share-title" id="shareTitle">음원 제목</div>
+            </div>
+            <div class="share-users-section">
+                <div class="share-users-header">
+                    <h4>공유받을 사용자 선택</h4>
+                    <label class="select-all-container">
+                        <input type="checkbox" id="selectAllUsers" onchange="toggleSelectAll(this)">
+                        <span>전체 선택</span>
+                    </label>
+                </div>
+                <div class="share-users-list" id="shareUsersList">
+                    <div class="loading-users">사용자 목록을 불러오는 중...</div>
+                </div>
+            </div>
+            <div class="share-modal-actions">
+                <button class="share-cancel-btn" onclick="closeShareModal()">취소</button>
+                <button class="share-confirm-btn" onclick="confirmShare()">📤 공유하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 공유 완료 팝업 -->
+    <div id="shareSuccessPopup" class="share-success-popup" style="display: none;">
+        <div class="share-success-content">
+            <div class="share-success-icon">✅</div>
+            <div class="share-success-text">공유 완료!</div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}?v=20250119-79"></script>
+</body>
+</html>
+

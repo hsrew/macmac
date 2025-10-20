@@ -1,0 +1,378 @@
+{
+  "7rlrF5LFbqg": {
+    "success_format": "bestaudio[ext=webm]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T02:05:14.294932",
+    "success_count": 4,
+    "device": "desktop"
+  },
+  "4FsdvyM0SpM": {
+    "success_format": "bestaudio[ext=webm]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T02:05:02.155917",
+    "success_count": 8,
+    "device": "desktop"
+  },
+  "B7iJkWixmZ8": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T02:00:30.553089",
+    "success_count": 15,
+    "device": "mobile"
+  },
+  "5JY1EB4zPxQ": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T01:06:35.950558",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "QXH2qjQlNCE": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T02:05:10.054336",
+    "success_count": 4,
+    "device": "desktop"
+  },
+  "QIAkLMqUZUU": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-18T23:16:55.446934",
+    "success_count": 1,
+    "device": "desktop"
+  },
+  "video_QIAkLMqUZUU": {
+    "success_format": "best[height<=720][ext=mp4]",
+    "failed_formats": [],
+    "last_updated": "2025-10-18T23:57:07.669903",
+    "success_count": 3,
+    "device": "desktop"
+  },
+  "video_46G125OV2j0": {
+    "success_format": "best[height<=720][ext=mp4]",
+    "failed_formats": [],
+    "last_updated": "2025-10-18T23:19:19.842590",
+    "success_count": 1,
+    "device": "desktop"
+  },
+  "video_Rrht6t16fGQ": {
+    "success_format": "best[height<=720][ext=mp4]",
+    "failed_formats": [],
+    "last_updated": "2025-10-18T23:20:13.208592",
+    "success_count": 2,
+    "device": "desktop"
+  },
+  "video_HCSc-Nt-1NI": {
+    "success_format": "best[height<=720][ext=mp4]",
+    "failed_formats": [],
+    "last_updated": "2025-10-18T23:34:17.358382",
+    "success_count": 1,
+    "device": "desktop"
+  },
+  "gw3ltsoYBtI": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T05:51:41.431705",
+    "success_count": 5,
+    "device": "mobile"
+  },
+  "gaRU-ORsOzg": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T02:05:30.370921",
+    "success_count": 2,
+    "device": "desktop"
+  },
+  "DRdAgeHuL_g": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T02:05:34.727933",
+    "success_count": 1,
+    "device": "desktop"
+  },
+  "7NEdxEkojHk": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T02:05:51.416404",
+    "success_count": 1,
+    "device": "desktop"
+  },
+  "kLUyfsA6uK8": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T02:14:22.345612",
+    "success_count": 1,
+    "device": "mobile"
+  },
+  "ShxagKy3CHQ": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T05:52:29.812668",
+    "success_count": 4,
+    "device": "mobile"
+  },
+  "Q3kSrDof0FA": {
+    "success_format": "bestaudio[ext=webm]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T05:55:22.648319",
+    "success_count": 4,
+    "device": "mobile"
+  },
+  "d8DHMAWcK6U": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T02:27:50.559138",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "nFYTreeo7X0": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T02:28:27.573595",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "EgJd_c0aB_g": {
+    "success_format": "bestaudio[ext=webm]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T03:06:44.306490",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "gnOs_4k69dE": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T03:08:00.756349",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "JPg4E4w_ZyE": {
+    "success_format": "bestaudio[ext=webm]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T03:09:35.256633",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "sTmgaP2gYsk": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T03:10:10.678763",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "5svlvTirzpg": {
+    "success_format": "bestaudio[ext=webm]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T03:12:42.209472",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "fjX7Y3DKzAA": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T03:22:36.841573",
+    "success_count": 3,
+    "device": "mobile"
+  },
+  "p2fxv3PAtLU": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T04:51:35.337079",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "oU1woZbRwTk": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T04:55:08.089338",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "ioxTNNw8K1s": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T05:03:50.186767",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "040UySxgXdk": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T05:09:37.950483",
+    "success_count": 3,
+    "device": "mobile"
+  },
+  "HPPBGosyOOM": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T05:12:39.017974",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "e_Viwt30r4U": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T05:16:18.793617",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "TxJzr51-27s": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T05:18:19.712867",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "GHfT9FpZhnc": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T05:54:03.453268",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "xz0Y8eB8Cnw": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T05:54:42.246274",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "WrdFbfzs2fE": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T05:55:49.824249",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "1BcWwIX3JBo": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T12:03:48.977279",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "Zq8qVY9O64k": {
+    "success_format": "bestaudio[ext=webm]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T12:15:26.427225",
+    "success_count": 3,
+    "device": "mobile"
+  },
+  "T0pZ4BkAEvA": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T12:16:45.249294",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "rxHFaOcGHmw": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T12:26:32.271511",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "QaSoPiFYBZ4": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T13:02:55.405743",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "video_NjE1HWrPIes": {
+    "success_format": "best[height<=720][ext=mp4]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T14:31:31.696071",
+    "success_count": 8,
+    "device": "desktop"
+  },
+  "video_ioxTNNw8K1s": {
+    "success_format": "best[height<=720][ext=mp4]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T14:21:23.126490",
+    "success_count": 3,
+    "device": "desktop"
+  },
+  "dU021sqb18A": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T14:31:44.685645",
+    "success_count": 1,
+    "device": "mobile"
+  },
+  "video_7NEdxEkojHk": {
+    "success_format": "best[height<=720][ext=mp4]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T14:33:03.149639",
+    "success_count": 1,
+    "device": "desktop"
+  },
+  "video_dU021sqb18A": {
+    "success_format": "best[height<=720][ext=mp4]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T14:33:16.225534",
+    "success_count": 1,
+    "device": "desktop"
+  },
+  "video_2025-10-18_": {
+    "success_format": null,
+    "failed_formats": [
+      "best[height<=720][ext=mp4]",
+      "best[height<=1080][ext=mp4]",
+      "best[height<=720]",
+      "best[ext=mp4]",
+      "best"
+    ],
+    "last_updated": null,
+    "success_count": 0
+  },
+  "3ZJkHS-qhWU": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T22:55:19.684728",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "EsF2SwEamdQ": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-19T22:56:06.761950",
+    "success_count": 2,
+    "device": "mobile"
+  },
+  "JUzPQ0JalHE": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-20T00:03:30.430319",
+    "success_count": 1,
+    "device": "mobile"
+  },
+  "oA7tl98aRkU": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-20T00:05:34.943719",
+    "success_count": 1,
+    "device": "mobile"
+  },
+  "EqSqZesIfzY": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-20T00:07:24.085953",
+    "success_count": 1,
+    "device": "mobile"
+  },
+  "jlqga2MIdRU": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-20T00:31:27.211806",
+    "success_count": 1,
+    "device": "mobile"
+  },
+  "YsWaftG0D6U": {
+    "success_format": "bestaudio[ext=m4a]",
+    "failed_formats": [],
+    "last_updated": "2025-10-20T01:02:41.002930",
+    "success_count": 1,
+    "device": "mobile"
+  }
+}

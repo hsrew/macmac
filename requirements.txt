@@ -1,0 +1,14 @@
+Flask==2.3.3
+yt-dlp>=2025.9.26
+instaloader>=4.14.2
+Werkzeug==2.3.7
+PyQt5==5.15.11
+PyQtWebEngine==5.15.7
+opencv-python>=4.12.0
+Pillow>=11.3.0
+Flask-Session>=0.5.0
+requests>=2.32.0
+Flask-Caching>=2.0.2
+mutagen>=1.47.0
+flask-cors>=4.0.0
+
