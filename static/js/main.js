@@ -826,8 +826,11 @@ async function streamAudio() {
         downloadCheckInterval = null;
     }
     
-    // ⚡ 로딩창을 버튼 클릭 즉시 표시 (지연 시간 제거)
-    showLoadingPopup('⚡ 음원 준비 중...', '잠시만 기다려주세요', true);
+    // ⚡ 로딩창을 버튼 클릭 즉시 표시 (이미 표시된 경우는 스킵)
+    const loadingPopup = document.getElementById('loadingPopup');
+    if (loadingPopup.style.display !== 'flex') {
+        showLoadingPopup('⚡ 음원 준비 중...', '잠시만 기다려주세요', true);
+    }
     
     // 버튼이 있는 경우에만 비활성화
     if (streamBtn) {
@@ -1792,6 +1795,9 @@ async function prefetchNextTrack(index) {
 async function playFromPlaylist(url, index) {
     // 현재 인덱스 저장
     currentPlaylistIndex = index;
+    
+    // ⚡ 로딩창을 즉시 표시 (지연 시간 제거)
+    showLoadingPopup('⚡ 음원 준비 중...', '잠시만 기다려주세요', true);
     
     // 🚗 테슬라 모드에서는 prefetch 데이터 무시하고 서버 API 호출
     if (isStreamingMode) {
