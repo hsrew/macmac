@@ -826,6 +826,9 @@ async function streamAudio() {
         downloadCheckInterval = null;
     }
     
+    // ⚡ 로딩창을 버튼 클릭 즉시 표시 (지연 시간 제거)
+    showLoadingPopup('⚡ 음원 준비 중...', '잠시만 기다려주세요', true);
+    
     // 버튼이 있는 경우에만 비활성화
     if (streamBtn) {
         streamBtn.disabled = true;
@@ -959,14 +962,21 @@ async function streamAudio() {
             // 포맷 지원 안함 에러 처리
             if (data.error_type === 'format_not_available') {
                 showStatus(`❌ ${data.message}`, 'error');
+                hideLoadingPopup();
                 return;
             }
             throw new Error(data.message || '알 수 없는 오류');
         }
         
-        // 🎬 다운로드가 필요한 경우에만 로딩 화면 표시
+        // ⚡ 로딩창은 이미 표시되어 있음 (streamAudio 시작 시 표시됨)
+        // 추가 메시지만 업데이트
         if (data.downloading && !data.from_cache && !data.local_file) {
-            showLoadingPopup('⚡ 서버에 음원 다운로드 중...', '처음 재생하는 곡입니다. 잠시만 기다려주세요');
+            // 다운로드 중인 경우에만 메시지 업데이트
+            const popup = document.getElementById('loadingPopup');
+            const textEl = popup.querySelector('.loading-text');
+            const subtextEl = popup.querySelector('.loading-subtext');
+            textEl.textContent = '⚡ 서버에 음원 다운로드 중...';
+            subtextEl.textContent = '처음 재생하는 곡입니다. 잠시만 기다려주세요';
         }
         
         if (data.success && data.audio_url) {
@@ -2223,11 +2233,8 @@ function formatViews(count) {
 // 검색 결과에서 영상 재생
 async function watchVideoFromSearch(url, title) {
     try {
-        // 로딩 팝업 표시 (다운로드 중)
-        const loadingPopup = document.getElementById('loadingPopup');
-        if (loadingPopup.style.display !== 'flex') {
-            showLoadingPopup('📹 서버에 영상 다운로드 중...', '잠시만 기다려주세요', true);
-        }
+        // ⚡ 로딩 팝업을 즉시 표시 (지연 시간 제거)
+        showLoadingPopup('📹 영상 준비 중...', '잠시만 기다려주세요', true);
         
         showStatus('영상을 불러오는 중...', 'info');
         
@@ -2242,10 +2249,9 @@ async function watchVideoFromSearch(url, title) {
         
         const data = await response.json();
         
-        // 로딩 팝업 숨기기
-        hideLoadingPopup();
-        
         if (!data.success) {
+            // 로딩 팝업 숨기기
+            hideLoadingPopup();
             // 포맷 지원 안함 에러 처리
             if (data.error_type === 'format_not_available') {
                 showStatus(`❌ ${data.message}`, 'error');
@@ -2256,6 +2262,8 @@ async function watchVideoFromSearch(url, title) {
         }
         
         if (data.success) {
+            // 로딩 팝업 숨기기 (성공 시)
+            hideLoadingPopup();
             openWatchModal(data);
             showStatus('영상 재생 시작! 광고 없이 재생됩니다 🎬', 'success');
         }
