@@ -677,11 +677,11 @@ async function openVideoSimple(video) {
             console.error('파일명:', video.filename);
             console.error('URL:', videoUrl);
             hideLoadingPopup();
-            showStatus('영상 파일을 찾을 수 없습니다. 스트리밍으로 전환합니다...', 'info');
             
-            // 스트리밍으로 전환
+            // ⚠️ 무한 루프 방지: 스트리밍 전환 대신 에러 메시지만 표시
             modal.style.display = 'none';
-            watchVideoFromSearch(video.url, video.title);
+            showStatus('❌ 영상 파일을 찾을 수 없습니다. 파일이 삭제되었거나 손상되었을 수 있습니다.', 'error');
+            
             modalVideo.removeEventListener('error', onError);
         }, { once: true });
         
