@@ -2093,17 +2093,23 @@ class VideoDownloaderServer:
         return filename[:200]
     
     def download_youtube(self, url):
-        """유튜브 영상 다운로드 (고화질)"""
+        """유튜브 영상 다운로드 (고화질) - 쇼츠/일반 영상 모두 지원"""
         try:
             # 다운로드 전 파일 목록 확인
             before_files = set(os.listdir(self.VIDEOS_DIR)) if os.path.exists(self.VIDEOS_DIR) else set()
             
-            # 🎬 고화질 다운로드 설정 (1080p 우선, 최대 화질)
+            # 🎬 최고 화질 다운로드 설정 (쇼츠 최적화)
             ydl_opts = {
-                # 최고 화질 우선 다운로드 (1080p → 2K → 4K → 최고화질)
-                # bestvideo+bestaudio: 영상과 음성을 따로 다운받아 합침 (최고 화질)
-                # best: 영상+음성이 합쳐진 파일 중 최고 화질
-                'format': 'bestvideo[ext=mp4][height<=1920]+bestaudio[ext=m4a]/bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4][height<=1920]/best[ext=mp4]/best',
+                # 🚀 원본 최고 화질 다운로드 (화질 제한 없음!)
+                # 1순위: 영상+음성 분리 다운로드 후 병합 (최고 화질, 쇼츠 포함)
+                # 2순위: 통합 파일 중 최고 화질
+                # webm 포맷도 포함 (쇼츠는 webm이 더 고화질인 경우가 많음)
+                'format': (
+                    'bestvideo[ext=mp4]+bestaudio[ext=m4a]/'  # 1순위: mp4 영상+음성
+                    'bestvideo+bestaudio/'                     # 2순위: 모든 포맷 최고화질
+                    'best[ext=mp4]/'                           # 3순위: mp4 통합 파일
+                    'best'                                     # 4순위: 모든 포맷 최고
+                ),
                 'outtmpl': os.path.join(self.VIDEOS_DIR, '%(title)s.%(ext)s'),
                 'quiet': True,
                 'merge_output_format': 'mp4',  # 영상+음성 합칠 때 mp4로
@@ -2111,6 +2117,10 @@ class VideoDownloaderServer:
                     'key': 'FFmpegVideoConvertor',
                     'preferedformat': 'mp4',
                 }],
+                # 쇼츠 최적화 옵션
+                'nocheckcertificate': True,
+                'prefer_free_formats': False,  # 유료 포맷(고화질) 우선
+                'youtube_include_dash_manifest': True,  # DASH 매니페스트 포함 (고화질)
             }
             
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
